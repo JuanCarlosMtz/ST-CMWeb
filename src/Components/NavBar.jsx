@@ -6,8 +6,8 @@ function NavBar(){
     return(
         <nav className="navBar">
             <ul>
-                <li><Link to="/home" className="title">Enciclopedia</Link></li>
-                <li><Link to="/astronomy" className="link">Astronomy</Link> </li>
+                <li><Link to="/home" className="title">Loopedia</Link></li>
+                <li><Link to="/astronomy" className="route">Astronomy</Link> </li>
             </ul>
         </nav>
     )

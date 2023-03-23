@@ -1,4 +1,3 @@
-import React from "react"
 import {useEffect, useState} from 'react'
 import '../css/Astronomy.css'
 import NavBar from "../Components/NavBar.jsx";
