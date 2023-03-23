@@ -1,12 +1,12 @@
 import React from "react"
 import {useEffect, useState} from 'react'
-import '../Astronomy.css'
-import NavBar from "./NavBar.jsx";
+import '../css/Astronomy.css'
+import NavBar from "../Components/NavBar.jsx";
 
 
 const apiKey = "JG92Aw10a9YLwjZ27GROTirgE6j7qnB9VeMUClvz"
-
 //const apiKey = process.env.REACT_APP_NASA_KEY
+
 function Astronomy() {
     const [photoData, setPhotoData] = useState(null)
     useEffect(() =>{

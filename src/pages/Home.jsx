@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom";
-import NavBar from "./NavBar.jsx";
+import NavBar from "../Components/NavBar.jsx";
 
 function Home(){
     return (
