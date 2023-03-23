@@ -1,7 +1,8 @@
 import { auth } from "../lib/firebase-config"
 import { useState } from "react";
 import { signOut, onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../lib/firebase-config";
 
 function TestPage() {
 
@@ -13,6 +14,20 @@ function TestPage() {
 
     const logout = async () => {
         await signOut(auth);
+    }
+
+    const addNote = async () => {
+        try {
+            const docRef = await addDoc(collection(db, "usersNotes"), {
+              createdAt: Date.now(),
+              note: "myfirstnote",
+              title: "MFTitle",
+              user: "user1"
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
     }
 
 
@@ -41,6 +56,7 @@ function TestPage() {
         <div>
             Página de prueba
             <button onClick={logout}>Log Out</button>
+            <button onClick={addNote}>Add Note</button>
         </div>
     );
 }
