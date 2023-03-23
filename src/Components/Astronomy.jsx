@@ -1,6 +1,7 @@
 import React from "react"
 import {useEffect, useState} from 'react'
 import '../Astronomy.css'
+import NavBar from "./NavBar.jsx";
 
 
 const apiKey = "JG92Aw10a9YLwjZ27GROTirgE6j7qnB9VeMUClvz"
@@ -20,6 +21,8 @@ function Astronomy() {
         }
     }, []);
     return(
+        <>
+        <NavBar/>
         <div className="astronomy">
             <div id="stars1"></div>
             <div id="stars2"></div>
@@ -55,6 +58,7 @@ function Astronomy() {
             </div>
 
         </div>
+        </>
     );
 }
 

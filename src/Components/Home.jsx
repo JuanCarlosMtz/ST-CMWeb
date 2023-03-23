@@ -1,14 +1,18 @@
 import React from "react"
 import {Link} from "react-router-dom";
-
+import NavBar from "./NavBar.jsx";
 
 function Home(){
     return (
-        <div className="Home">
+        <>
+            <NavBar/>
+            <div className="Home">
 
-            <Link to="/astronomy">Astronomy time</Link>
+                <Link to="/astronomy">Astronomy time</Link>
 
-        </div>
+            </div>
+        </>
+
 
     );
 }
