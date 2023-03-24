@@ -23,7 +23,7 @@ function NavBar(){
                 <li><Link to="/home" className="title">LoopEdia</Link></li>
                 <li><Link to="/astronomy" className="link">Astronomy</Link> </li>
                 <li><Link to="/news" className="link">World News</Link> </li>
-                <li><Link to="#" className="link">Arts</Link> </li>
+                <li><Link to="/science" className="link">Science</Link> </li>
                 <li></li>
             </ul>
             <Link to="#" onClick={logout} className="signOut">Sign Out</Link>     
