@@ -22,6 +22,7 @@ function NavBar(){
             <ul>
                 <li><Link to="/home" className="title">LoopEdia</Link></li>
                 <li><Link to="/astronomy" className="link">Astronomy</Link> </li>
+                <li><Link to="/news" className="link">World News</Link> </li>
                 <li><Link to="#" className="link">Arts</Link> </li>
                 <li></li>
             </ul>
