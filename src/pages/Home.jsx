@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react"
 import {Link} from "react-router-dom";
 import NavBar from "../Components/NavBar.jsx";
+import FeedComponent from "../Components/FeedComponent.jsx";
 import NoteButton from "../components/NoteButton";
 import "../css/Home.css";
 import { collection, getDocs, query, orderBy, onSnapshot } from "firebase/firestore";
@@ -15,7 +16,17 @@ function Home(){
     const [loading, setLoading] = useState(true);
     const [userEmail, setUserEmail] = useState("");
 
+    const [articles, setArticles] = useState([])
+    const collectionRef = collection(db, 'postsList')
+
     useEffect(()=>{
+        async function getArticles(){
+            const data = await getDocs(collectionRef)
+            setArticles(data.docs.map((doc)=> ({...doc.data(), id: doc.userID})))
+            console.log(data)
+        }
+        getArticles()
+
         const q = query(
             collection(db, "usersNotes"),
             orderBy("createdAt")
@@ -38,14 +49,29 @@ function Home(){
         }
     });
 
-
     return (
         <>
             <NoteButton />
             <NavBar/>
             <div className="home">
                 <div className="feed">
-                    <Link to="/astronomy">Astronomy time</Link>
+                {articles.map((article) => {
+                    return(
+                    <div>
+                        {" "}
+                        {article.title?(
+                            <FeedComponent title={article.title}
+                                           imageID={article.imageID}
+                                           reroute={article.reroute}
+                                           description={article.description}/>
+                        ):(
+                            <div></div>
+                        )}
+
+
+                    </div>
+                    )
+                })}
                 </div>
                 <div className="userNotes">
                     <div className="notesTitle">
@@ -74,8 +100,6 @@ function Home(){
                 </div>
             </div>
         </>
-
-
-    );
+    )
 }
 export default Home
