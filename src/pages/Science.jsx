@@ -3,8 +3,6 @@ import '../css/Science.css'
 import NavBar from "../Components/NavBar.jsx"
 import Macrophages_covid19 from '../img/Macrophages_covid19.jpg'
 
-
-
 function Science(){
     return(
         <>
