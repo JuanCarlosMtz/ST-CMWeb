@@ -1,5 +1,5 @@
-import {Link} from "react-router-dom"
-import '../css/FeedComponent.css'
+import {Link} from "react-router-dom";
+import '../css/FeedComponent.css';
 function FeedComponent(props){
     return(
         <Link to={props.reroute} className="link">

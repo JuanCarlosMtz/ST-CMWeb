@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react"
 import {Link} from "react-router-dom";
 import NavBar from "../Components/NavBar.jsx";
 import FeedComponent from "../Components/FeedComponent.jsx";
-import NoteButton from "../components/NoteButton";
+import NoteButton from "../components/NoteButton.jsx";
 import "../css/Home.css";
 import { collection, getDocs, query, orderBy, onSnapshot } from "firebase/firestore";
 import {db} from '../lib/firebase-config';

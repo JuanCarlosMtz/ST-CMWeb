@@ -1,5 +1,5 @@
 import "../css/NoteButton.css";
-import NoteModal from "../components/NoteModal";
+import NoteModal from "../components/NoteModal.jsx";
 import { useState } from "react";
 
 function NoteButton() {

@@ -4,7 +4,7 @@ import passwordIcon from "../img/passwordIcon.png";
 
 import { auth } from "../lib/firebase-config"
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import SignModal from "../components/SignModal";
+import SignModal from "../components/SignModal.jsx";
 
 import { useState, useEffect  } from "react";
 import { useForm } from "react-hook-form";
