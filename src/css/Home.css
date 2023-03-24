@@ -7,10 +7,11 @@
 .feed {
     width: 70vw;
     height: 92vh;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     background-color: gray;
+    padding-left: 1vw;
 }
 
 .userNotes {
