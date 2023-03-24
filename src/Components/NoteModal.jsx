@@ -3,23 +3,38 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase-config"
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../lib/firebase-config";
 
-function SignModal({ setOpenModal }) {
+function NoteModal({ setOpenModal }) {
     if (!setOpenModal) return null;
 
     const [isLoading, setLoading] = useState(false);
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
-    async function signup(data) {
+    const [userEmail, setUserEmail] = useState("");
+    
+
+    onAuthStateChanged(auth, user => {
+        if(!user) {
+          window.location = '/';
+        } else {
+            setUserEmail(user.email);
+        }
+    });
+
+    async function addNote(data) {
         setLoading(true);
         try {
-            const user = await createUserWithEmailAndPassword(
-                auth,
-                data.email,
-                data.password
-            );
+            const docRef = await addDoc(collection(db, "usersNotes"), {
+              createdAt: Date.now(9),
+              note: data.content,
+              title: data.title,
+              color: data.color,
+              user: userEmail
+            });
             alert("Success!");
-        } catch(error) {
+        } catch (error) {
             alert(error);
         }
         setLoading(false);
@@ -35,17 +50,21 @@ function SignModal({ setOpenModal }) {
                     </button>
                 </div>
                 <div className="modalTitle">
-                    New user
+                    Add note
                 </div>
                 <div className="modalBody">
-                    <form onSubmit={handleSubmit(signup)}>
-                        <input type="text" required placeholder="Email" {...register("email")} />
-                        <input type="password" required placeholder="Password" {...register("password")} />
+                    <form onSubmit={handleSubmit(addNote)}>
+                        <input type="text" required placeholder="Write a title..." {...register("title")} />
+                        <textarea required placeholder="Write your note..." {...register("content")} />
+                        <div>
+                            <input type="color"  className="colorInput" id="noteColor" name="noteColor" {...register("color")} />
+                            <label for="noteColor">Select a background color</label>
+                        </div>    
                         <button type="submit" disabled={isLoading}>{isLoading ? (
                         <div className="loader-container">
                             <div className="spinner"></div>
                         </div>
-                        ) : "Sign Up"}</button>
+                        ) : "Add"}</button>
                     </form>
                 </div>
                 {/*
@@ -59,4 +78,4 @@ function SignModal({ setOpenModal }) {
     );
 }
 
-export default SignModal;
+export default NoteModal;

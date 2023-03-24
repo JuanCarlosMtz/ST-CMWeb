@@ -73,7 +73,7 @@
 input {
     width: 18vw;
     height: 7vh;
-    border: 2px solid #1167b1;
+    border: 2px solid darkgray;
     border-radius: 4px;
     font-size: 1rem;
     background-color: white;
@@ -81,12 +81,22 @@ input {
 }
 
 input:focus {
-    border: 2px solid #03254c;
+    border: 2px solid black;
+}
+
+textarea {
+    width: 18vw;
+    height: 11vh;
+    border: 2px solid darkgray;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+    padding-left: 5px;
 }
 
 button {
-    background-color: #1167b1;
-    border-radius: 8px;
+    background-color: #1a1a1a;
+    border-radius: 4px;
     border: none;
     cursor: pointer;
     color: white;
@@ -98,7 +108,7 @@ button {
 }
 
 button:hover {
-    background-color: #03254c;
+    background-color: darkgray;
 }
 
 .loader-container {

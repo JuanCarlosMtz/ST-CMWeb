@@ -41,6 +41,10 @@
     height: 5vh;
 }
 
+.closeBtn button:hover {
+    background-color: transparent;
+}
+
 .modalBody {
     display: flex;
     justify-content: center;
@@ -60,4 +64,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.colorInput {
+    width: 3vw;
+    height: 3.5vh;
+    border: 2px solid darkgrey;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+label {
+    padding: 10px;
 }

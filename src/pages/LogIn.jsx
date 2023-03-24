@@ -5,7 +5,6 @@ import passwordIcon from "../img/passwordIcon.png";
 import { auth } from "../lib/firebase-config"
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import SignModal from "../components/SignModal";
-import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect  } from "react";
 import { useForm } from "react-hook-form";
@@ -13,8 +12,7 @@ import { useForm } from "react-hook-form";
 function LogIn() {
     const [modalOpen, setModalOpen] = useState(false);
     const [isLoading, setLoading] = useState(false);
-    const [dummy, setDummy] = useState(0);
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
 
 
     const login = async (data) => {
@@ -29,19 +27,13 @@ function LogIn() {
             alert(error.message);
         }
         setLoading(false);
-        {/*reset();*/}
     }
-
-    {/*const [userData, setUserData] = useState({});
-    onAuthStateChanged(auth, (currentUser) => {
-        setUserData(currentUser);
-    })*/}
 
     onAuthStateChanged(auth, user => {
         if(user) {
-          window.location = '/testpage';
+          window.location = '/home';
         }
-      });
+    });
 
     const [img, setImg] = useState();
     const fetchImage = async () => {
@@ -81,18 +73,18 @@ function LogIn() {
                 */}
                 <form onSubmit={handleSubmit(login)}>
                     <div className="logTitle">
-                        Usuario registrado
+                        Registered user
                     </div>
-                    <input type="text" placeholder="Email" {...register("email")} />
-                    <input type="password" placeholder="Contraseña" {...register("password")} />
+                    <input type="text" required placeholder="Email" {...register("email")} />
+                    <input type="password" required placeholder="Password" {...register("password")} />
                     <button type="submit" disabled={isLoading}>{isLoading ? (
                         <div className="loader-container">
                             <div className="spinner"></div>
                         </div>
-                        ) : "Iniciar sesión"}</button>
+                        ) : "Log In"}</button>
                     <div className="register">
-                        ¿No tienes cuenta?
-                        <a href="#" onClick={() => { setModalOpen(true); }}>{'\n'}Registrarse</a>
+                        Don't have an account yet?{'\n'}
+                        <a href="#" onClick={() => { setModalOpen(true); }}>Create one</a>
                     </div>
                 </form>
             </div>
