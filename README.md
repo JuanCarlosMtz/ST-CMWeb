@@ -1,5 +1,7 @@
 Error508's project
 
+Enciclopedia digital
+
 Desarrollado con React, Firebase y APIs de terceros
 
 Ejecutar "nmp install" para instalar dependencias
